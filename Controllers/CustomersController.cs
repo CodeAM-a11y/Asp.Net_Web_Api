@@ -17,7 +17,8 @@ public class CustomersController : ControllerBase {
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Customer>>> GetAllCustomer() {
-        return await _ctx.Customers.ToListAsync();
+        return await _ctx.Customers
+            .ToListAsync();
     }
 
     [HttpGet("{id}")]

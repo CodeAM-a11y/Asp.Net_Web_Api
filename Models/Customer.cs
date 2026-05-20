@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+
 namespace Zählerstände.Models;
 
 public class Customer {
@@ -7,5 +10,5 @@ public class Customer {
     public string Street { get; set; }
     public int Zip { get; set; }
     public string City { get; set; }
-    public ICollection<Meter> Meters { get; } = new List<Meter>();
+    [Newtonsoft.Json.JsonIgnoreAttribute] public ICollection<Meter> Meters { get; } = new List<Meter>();
 }

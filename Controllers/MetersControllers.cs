@@ -12,8 +12,10 @@ public class MetersControllers : ControllerBase {
         _ctx = ctx;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Meter>>> GetAllCustomer() {
-        return await _ctx.Meters.ToListAsync();
+    public async Task<ActionResult<IEnumerable<Meter>>> GetAllCustomer([FromQuery] int? customerId) {
+        return await _ctx.Meters
+            .Where(m=>customerId == null||m.CustomerId==customerId)
+            .ToListAsync();
     }
 
     [HttpGet("{id}")]

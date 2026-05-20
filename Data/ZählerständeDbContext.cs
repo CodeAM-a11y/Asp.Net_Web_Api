@@ -21,7 +21,8 @@ public class ZählerständeDbContext : DbContext {
             entity.HasMany(e => e.Meters)
                 .WithOne(e => e.Customer)
                 .HasForeignKey(e => e.CustomerId)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
         });
         modelBuilder.Entity<Meter>(entity => {
             entity.HasKey(e => e.Id);
@@ -30,7 +31,8 @@ public class ZählerständeDbContext : DbContext {
             entity.HasMany(e => e.MeterReadings)
                 .WithOne(e => e.Meter)
                 .HasForeignKey(e => e.MeterId)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
         });
         modelBuilder.Entity<MeterReading>(entity => {
             entity.HasKey(e => e.Id);
