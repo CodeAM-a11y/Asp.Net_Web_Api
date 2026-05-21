@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Zählerstände.Models;
 
 namespace Zählerstände.Data;
 
-public class ZählerständeDbContext : DbContext {
+public class ZählerständeDbContext : IdentityDbContext {
     public ZählerständeDbContext(DbContextOptions<ZählerständeDbContext> opts) : base(opts){}
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<Meter> Meters => Set<Meter>();
